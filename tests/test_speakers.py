@@ -5,7 +5,7 @@ client = TestClient(app)
 
 def test_create_get_update_delete_speaker():
     data = {
-        "name": "Adewake Yusuf",
+        "name": "Adewale Yusuf",
         "topic": "Digital Health"
     }
 
