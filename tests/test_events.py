@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from api.main import app  # adjust import path as needed
+from main import app  # adjust import path as needed
 
 client = TestClient(app)
 
