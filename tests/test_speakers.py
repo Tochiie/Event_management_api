@@ -1,12 +1,12 @@
 from fastapi.testclient import TestClient
-from api.main import app
+from main import app
 
 client = TestClient(app)
 
 def test_create_get_update_delete_speaker():
     data = {
-        "name": "Jane Doe",
-        "topic": "AI in Africa"
+        "name": "Adewake Yusuf",
+        "topic": "Digital Health"
     }
 
     res = client.post("/speakers/", json=data)

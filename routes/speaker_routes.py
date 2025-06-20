@@ -1,7 +1,12 @@
 from fastapi import APIRouter
+from schemas.speaker import SpeakerCreate, Speaker
 
-router = APIRouter(prefix="/speakers", tags=["Speakers"])
+router = APIRouter()
 
-@router.get("/")
-def get_speakers():
-    return {"message": "List of speakers"}
+@router.post("/", response_model=Speaker, status_code=201)
+def create_speaker(speaker: SpeakerCreate):
+    return {
+        "id": 1,
+        "name": speaker.name,
+        "topic": speaker.topic
+    }
