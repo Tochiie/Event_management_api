@@ -1,10 +1,10 @@
-from data.db import registrations, users, events
+from data.db import registrations, users, events # type: ignore
 from schemas.registration import Registration
-from datetime import datetime
+from datetime import date
 
 def register_user(user_id: int, event_id: int):
     if any(r.user_id == user_id and r.event_id == event_id for r in registrations):
-        return None  # Already registered
+        return None 
     
     user = next((u for u in users if u.id == user_id and u.is_active), None)
     event = next((e for e in events if e.id == event_id and e.is_open), None)
@@ -15,7 +15,7 @@ def register_user(user_id: int, event_id: int):
             id=reg_id,
             user_id=user_id,
             event_id=event_id,
-            registration_date=datetime.now(),
+            registration_date=date.today(),
             attended=False
         )
         registrations.append(reg)

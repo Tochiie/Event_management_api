@@ -1,5 +1,5 @@
 
-from data.db import events
+from main import events
 from schemas.event import Event, EventCreate
 
 def create_event(event_data: EventCreate):

@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from datetime import datetime
+from datetime import date
 
 class RegistrationBase(BaseModel):
     user_id: int
@@ -10,8 +10,9 @@ class RegistrationCreate(RegistrationBase):
 
 class Registration(RegistrationBase):
     id: int
-    registration_date: datetime
-    attended: bool = False
+    registration_date: date
+    attended: bool
 
     class Config:
-        orm_mode = True
+      from_attributes = True
+

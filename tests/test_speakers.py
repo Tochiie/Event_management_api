@@ -17,10 +17,10 @@ def test_create_get_update_delete_speaker():
     res = client.get(f"/speakers/{speaker_id}")
     assert res.status_code == 200
 
-    updated = {"name": "Jane AI"}
+    updated = {"name": "Adewale Yusuf", "topic": "Machine Learning"}
     res = client.put(f"/speakers/{speaker_id}", json=updated)
     assert res.status_code == 200
-    assert res.json()["name"] == "Jane AI"
+    assert res.json()["name"] == "Adewale Yusuf"
 
     res = client.delete(f"/speakers/{speaker_id}")
     assert res.status_code == 204

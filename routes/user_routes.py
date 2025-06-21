@@ -4,7 +4,7 @@ from services.user_service import users_db
 
 router = APIRouter()
 
-@router.post("/", response_model=User)
+@router.post("/", response_model=User, status_code=201)
 def create_user(user: UserCreate):
     if any(u.email == user.email for u in users_db):
         raise HTTPException(status_code=400, detail="Email already exists")
@@ -36,7 +36,7 @@ def update_user(user_id: int, data: UserUpdate):
         user.email = data.email
     return user
 
-@router.delete("/{user_id}")
+@router.delete("/{user_id}", status_code=204)
 def delete_user(user_id: int):
     global users_db
     user = next((u for u in users_db if u.id == user_id), None)
